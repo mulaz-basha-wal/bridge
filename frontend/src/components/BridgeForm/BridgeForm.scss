@@ -1,0 +1,36 @@
+.content {
+  .bridge-box {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    .quote-input {
+      -moz-appearance: textfield;
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+    .coin-selector {
+      color: black;
+      .css-1hb7zxy-IndicatorsContainer {
+        display: none;
+      }
+    }
+
+    button {
+      width: calc(100% - 0px);
+      padding: 10px;
+      background: #9333ea;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:disabled {
+      background: rgba(126, 34, 206, 0.7);
+      cursor: not-allowed;
+    }
+  }
+}

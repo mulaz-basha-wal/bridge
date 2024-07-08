@@ -1,0 +1,28 @@
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.blurry-float-dot {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  filter: blur(20px);
+  animation: float 6s infinite ease-in-out;
+
+  &:nth-child(2) {
+    background: rgba(255, 0, 150, 0.1);
+    width: 150px;
+    height: 150px;
+    animation-duration: 8s;
+    animation-direction: reverse;
+  }
+}
