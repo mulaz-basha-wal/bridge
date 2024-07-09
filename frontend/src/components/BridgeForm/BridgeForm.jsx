@@ -1,5 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
-import debounce from "lodash.debounce";
+import React, { useEffect, useState } from "react";
 import QuoteOptions from "../QuoteOptions/QuoteOptions";
 import {
   getNetworkList,
@@ -80,38 +79,6 @@ export default function BridgeForm() {
     setQuote({});
   };
 
-  const onChangeTo = async (coin) => {
-    if (fromValue > 0) fetchQuoteAPI(coin);
-  };
-
-  const fetchQuoteAPI = async (coin) => {
-    if (
-      fromValue > 0 &&
-      to.value &&
-      from.value &&
-      coin.value &&
-      network.value &&
-      from.decimal
-    ) {
-      try {
-        setQuote({});
-        setNote("Fetching quote details...");
-        const res = await getQuote({
-          sellToken: from.value,
-          buyToken: coin.value,
-          sellAmount: fromValue * 10 ** from.decimal,
-          networkId: network.value,
-          decimals: from.decimal,
-        });
-        setQuote(res.data.data);
-        setToValue(res.data.data.toAmount);
-        setNote(null);
-      } catch (error) {
-        setNote(error.message);
-      }
-    }
-  };
-
   useEffect(() => {
     fetchNetworkList();
   }, []);
@@ -120,13 +87,36 @@ export default function BridgeForm() {
     fetchNetworkListOfTokens(network.value);
   }, [network]);
 
-  const onFromValueChange = useMemo(
-    () =>
-      debounce(() => {
-        fetchQuoteAPI(to);
-      }, 1000),
-    [fetchQuoteAPI, to]
-  );
+  useEffect(() => {
+    const fetchQuoteAPI = async (coin) => {
+      if (
+        fromValue > 0 &&
+        to.value &&
+        from.value &&
+        coin.value &&
+        network.value &&
+        from.decimal
+      ) {
+        try {
+          setQuote({});
+          setNote("Fetching quote details...");
+          const res = await getQuote({
+            sellToken: from.value,
+            buyToken: coin.value,
+            sellAmount: fromValue * 10 ** from.decimal,
+            networkId: network.value,
+            decimals: from.decimal,
+          });
+          setQuote(res.data.data);
+          setToValue(res.data.data.toAmount);
+          setNote(null);
+        } catch (error) {
+          setNote(error.message);
+        }
+      }
+    };
+    fetchQuoteAPI(to);
+  }, [fromValue, to, from, network])
 
   return (
     <div className="content p-4 rounded-lg w-[100%] min-w-[400px] lg:w-[420px] sm:w-[420px]">
@@ -157,7 +147,6 @@ export default function BridgeForm() {
           value={numberFormatter(fromValue)}
           onChangeHandler={(value) => {
             setFromValue(value);
-            onFromValueChange();
           }}
         >
           <button
@@ -287,10 +276,10 @@ export default function BridgeForm() {
               supportedTo.map((n) => {
                 return (
                   <button
+                    key={n.value}
                     className="flex gap-2 items-center py-2 px-4"
                     onClick={() => {
                       setTo(n);
-                      onChangeTo(n);
                       setOpen(false);
                     }}
                   >
@@ -316,6 +305,7 @@ export default function BridgeForm() {
             {supportedNetworks.map((n) => {
               return (
                 <button
+                  key={n.value}
                   className="flex gap-2 items-center py-2 px-4"
                   onClick={() => {
                     setNetwork(n);
