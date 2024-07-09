@@ -20,10 +20,10 @@ const setupAxios = () => {
             return response;
         },
         error => {
-            if (error?.message === 'Network Error') {
-                return { data: { message: 'please try after sometime.' }, error: true }
-            }
-            return error.response
+            let message = error?.response?.data?.reason || error?.response?.data?.reason;
+            if (!message) message = 'Temporarily services are unavailable, please try after sometime.';    
+            const err = new Error(message);
+            throw err;
         }
     );
 

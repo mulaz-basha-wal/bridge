@@ -1,3 +1,4 @@
+export const DEFAULT_SELL_AMOUNT = 10;
 export const LANDING_PAGE_DOTS = [
   {
     top: 10,

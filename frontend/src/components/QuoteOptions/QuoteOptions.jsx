@@ -1,11 +1,14 @@
-import React, { useState } from "react";
-import Select from "react-select";
+import React from "react";
 import PropTypes from "prop-types";
 
-export default function QuoteOptions({ type, supportedCoins }) {
-  const [selectedOption, setSelectedOption] = useState(null);
+export default function QuoteOptions({ type, children, onChangeHandler, value, disabled }) {
+  
   const handleChange = (e) => {
-    setSelectedOption(e);
+    e.preventDefault();
+    const num = Number(e.target.value);
+    if (typeof num === 'number') {
+      onChangeHandler(num);
+    }
   };
 
   return (
@@ -13,21 +16,16 @@ export default function QuoteOptions({ type, supportedCoins }) {
       <p className="capitalize text-left text-sm font-medium mb-1 pl-1">
         {type}
       </p>
-      <div className="flex items-center">
+      <div className="flex mr-2">
         <input
           type="number"
+          disabled={disabled}
           className="quote-input w-[75%] p-2 mr-1 text-white bg-slate-700 font-extrabold text-xl"
-          defaultValue={0}
           min={0}
+          value={value}
+          onInput={handleChange}
         />
-        <Select
-          isSearchable
-          className="coin-selector w-fit"
-          placeholder="Select Token"
-          value={selectedOption}
-          options={supportedCoins}
-          onChange={handleChange}
-        />
+        {children}
       </div>
     </div>
   );
@@ -35,5 +33,5 @@ export default function QuoteOptions({ type, supportedCoins }) {
 
 QuoteOptions.propTypes = {
   type: PropTypes.string.isRequired,
-  supportedCoins: PropTypes.arrayOf(PropTypes.object),
+  children: PropTypes.node,
 };

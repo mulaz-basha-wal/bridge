@@ -1,4 +1,12 @@
 .content {
+  .img-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+  .confirm-menu {
+    height: fit-content;
+    min-height: 200px;
+  }
   .bridge-box {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
@@ -12,15 +20,19 @@
     }
     .coin-selector {
       color: black;
+
+      .css-13cymwt-control {
+        border: none;
+        outline: none;
+      }
       .css-1hb7zxy-IndicatorsContainer {
         display: none;
       }
     }
 
-    button {
+    button.bridge {
       width: calc(100% - 0px);
       padding: 10px;
-      background: #9333ea;
       border: none;
       border-radius: 5px;
       color: white;
@@ -28,7 +40,7 @@
       margin-top: 10px;
     }
 
-    button:disabled {
+    button.bridge:disabled {
       background: rgba(126, 34, 206, 0.7);
       cursor: not-allowed;
     }
