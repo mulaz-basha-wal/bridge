@@ -4,6 +4,7 @@
   "description": "NodeJS and Express server",
   "scripts": {
     "start": "DEBUG=bridge:* nodemon",
+    "build": "rimraf dist && tsc",
     "test": "jest --detectOpenHandles --no-cache --config jest.config.js"
   },
   "keywords": [],
