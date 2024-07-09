@@ -1,10 +1,7 @@
 import express from 'express';
+import bridgeRouter from './bridge';
 
 const rootRouter = express.Router();
-rootRouter.get("/check_me", (req, res) => {
-  res.json({
-    mag: 'check me'
-  })
-});
+rootRouter.use("/bridge", bridgeRouter);
 
 export default rootRouter;

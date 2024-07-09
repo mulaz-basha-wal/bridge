@@ -85,7 +85,6 @@ export default function BridgeForm() {
   };
 
   const fetchQuoteAPI = async (coin) => {
-    console.log("🚀 ~ file: BridgeForm.jsx:87 ~ fetchQuoteAPI ~ coin:");
     if (
       fromValue > 0 &&
       to.value &&
