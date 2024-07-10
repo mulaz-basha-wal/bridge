@@ -1,6 +1,6 @@
 import http from 'http';
-import app from './app';
-import rootRouter from './routes';
+import app from '../app';
+import rootRouter from '../routes';
 const debug = require('debug')('bridge:root');
 
 async function init(): Promise<undefined> {

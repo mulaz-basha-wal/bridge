@@ -3,5 +3,5 @@
   "buildCommand": "npm run build",
   "installCommand": "npm install",
   "outputDirectory": "dist",
-  "devCommand": "node index.js"
+  "devCommand": "npm start"
 }
