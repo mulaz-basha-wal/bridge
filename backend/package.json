@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "NodeJS and Express server",
   "scripts": {
-    "start": "DEBUG=bridge:* nodemon",
+    "start": "node dist/index.js",
+    "dev": "DEBUG=bridge:* nodemon",
     "build": "rimraf dist && tsc",
     "test": "jest --detectOpenHandles --no-cache --config jest.config.js"
   },
