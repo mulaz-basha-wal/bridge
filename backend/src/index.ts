@@ -1,5 +1,5 @@
 import http from 'http';
-import app from '@src/app';
+import app from './app';
 import rootRouter from './routes';
 const debug = require('debug')('bridge:root');
 

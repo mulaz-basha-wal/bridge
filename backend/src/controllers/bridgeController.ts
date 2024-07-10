@@ -1,8 +1,8 @@
 import {
   errorObjectHandler,
   oXSwapNumberConverter,
-} from "@src/utils/commonUtils";
-import { BRIDGE_NETWORKS, TOKENS } from "@src/utils/constants";
+} from "../utils/commonUtils";
+import { BRIDGE_NETWORKS, TOKENS } from "../utils/constants";
 import axios from "axios";
 import { Request, Response, NextFunction } from "express";
 

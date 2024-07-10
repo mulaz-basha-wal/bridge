@@ -1,5 +1,5 @@
-import { bridgeGetQuote, bridgeListOfTokens, bridgeNetworksList, bridgeTokensList } from '@src/controllers/bridgeController';
-import { validateBridgeListOfTokens, validateBridgeNetworks, validateBridgeTokens, validateGetQuote } from '@src/validators/bridgeValidator';
+import { bridgeGetQuote, bridgeListOfTokens, bridgeNetworksList, bridgeTokensList } from '../controllers/bridgeController';
+import { validateBridgeListOfTokens, validateBridgeNetworks, validateBridgeTokens, validateGetQuote } from '../validators/bridgeValidator';
 import express from 'express';
 
 const bridgeRouter = express.Router();

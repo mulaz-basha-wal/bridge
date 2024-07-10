@@ -1,4 +1,4 @@
-import { DATE_TIME_FORMAT } from '@src/utils/constants';
+import { DATE_TIME_FORMAT } from '../utils/constants';
 const logger = require('morgan');
 const moment = require('moment-timezone');
 const debug = require('debug')('bridge:logger');
