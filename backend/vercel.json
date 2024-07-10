@@ -3,17 +3,5 @@
   "buildCommand": "npm run build",
   "installCommand": "npm install",
   "outputDirectory": "dist",
-  "devCommand": "node index.js",
-  "builds": [
-    {
-      "src": "index.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "index.js"
-    }
-  ]
+  "devCommand": "node index.js"
 }
