@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 import express, { Request, Response } from 'express';
 import loggerM from './middlewares/logger';
 import helmet from 'helmet';
+import { rootHTML } from './utils/constants';
 
 const app = express();
 app.use(loggerM);
@@ -18,6 +19,9 @@ app.use(bodyParser.json({ limit: '1MB' }));
 app.use(express.urlencoded({ extended: false }));
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
+app.get('/', function (req: Request, res: Response) {
+  res.send(rootHTML);
+});
 app.get('/status', function (req: Request, res: Response) {
   res.status(200).json({ code: 200, message: 'System is running' });
 });
